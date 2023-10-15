@@ -1,52 +1,77 @@
-#include "main.h"
-/**
-* custom_s - a function to s handle
-* @args: arguments
-* Return: num of chars
-*/
-int custom_s(va_list args)
-{
-char *ptr = va_arg(args, char *);
-int counter = 0;
-int index;
-char flags = '\0';
-
-if (ptr == NULL)
-ptr = "(null)";
-
-for (index = 0; ptr[index] != '\0'; index++)
-{
-if ((ptr[index] > 0 && ptr[index] < 32) || ptr[index] >= 127)
-{
-counter = counter + print_hex(ptr[index], flags);
-}
-else
-{
-my_putchar(ptr[index]);
-counter++;
-}
-}
-return (counter);
-}
+#include "shell.h"
 
 /**
-* print_hex - a function that rints an hexadecimal value
-* @c: hex char
-* @flag: The flag character
-* Return: num of chars
+ * shell_strcpy - Copy a string from source to destination.
+*@des: Pointer to the destination buffer.
+*@sr: Pointer to the source string.
+*Return: Pointer to the destination buffer (des).
 */
-int print_hex(unsigned char c, char flag)
+char *shell_strcpy(char *des, char *sr)
 {
-char hex_digit[] = "0123456789ABCDEF";
-int counter = 0;
+	int i = 0;
 
-(void)flag;
-my_putchar('\\');
-my_putchar('x');
-my_putchar(hex_digit[(c >> 4) & 0xF]);
-my_putchar(hex_digit[c & 0xF]);
+	while (*(sr + i))
+	{
+		*(des + i) = *(sr + i);
+		i++;
+	}
+	*(des + i) = '\0';
+	return (des);
+}
+/**
+* shell_strlen - Calculate the length of a string.
+* @str: Pointer to the input string.
+* Return: Length of the string (number of characters).
+*/
+int shell_strlen(char *str)
+{
+	int len = 0, i = 0;
 
-counter = counter + 4;
+	while (*(str + i) != '\0')
+	{
+		len++;
+		i++;
+	}
+	return (len);
+}
+/**
+* shell_strcat - Func to concatenate 2 strings and return the result.
+* @des: string.
+* @sr: string.
+* Return: Return the pointer to the concatenated string.
+*/
+char *shell_strcat(char *des, char *sr)
+{
+	int des_len = 0, i = 0;
 
-return (counter);
+	while (des[des_len])
+		des_len++;
+
+	while (sr[i])
+	{
+		des[des_len] = sr[i];
+		des_len++;
+		i++;
+	}
+	des[des_len] = '\0';
+	return (des);
+}
+/**
+* shell_strcmp - Func to compare two strings lexicographically.
+* @str1: First string
+* @str2: Second string
+* Return: The difference between the differing characters ASCII values
+*/
+int shell_strcmp(char *str1, char *str2)
+{
+	int i;
+
+	for (i = 0; str1[i] == str2[i]; i++)
+	{
+		if (str1[i] == '\0')
+		{
+			return (0);
+		}
+	}
+	return (str1[i] - str2[i]);
 }
