@@ -30,13 +30,13 @@ int main(void)
 			free(input_buff);
 			continue;
 		}
-		if (count_spaces_tabs(input_buff))
+		if (my_sp_tab(input_buff))
 		{
 			free(input_buff);
 			continue;
 		}
-		arg = tokenize_input(input_buff);
-		if (!validate_cmd(arg, input_buff, exit_num))
+		arg = token_strtok(input_buff);
+		if (!valid_cmd(arg, input_buff, exit_num))
 		{
 			free(input_buff);
 			continue;

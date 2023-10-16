@@ -1,77 +1,83 @@
 #include "shell.h"
-
 /**
- * shell_strcpy - Copy a string from source to destination.
-*@des: Pointer to the destination buffer.
-*@sr: Pointer to the source string.
-*Return: Pointer to the destination buffer (des).
+ * my_strcpy - Copy a string from source to dest
+*@des: a pointer to the dest
+*@sr: a pointer to the source string
+*Return: copied string
 */
-char *shell_strcpy(char *des, char *sr)
+char *my_strcpy(char *des, char *sr)
 {
-	int i = 0;
+int index = 0;
 
-	while (*(sr + i))
-	{
-		*(des + i) = *(sr + i);
-		i++;
-	}
-	*(des + i) = '\0';
-	return (des);
+while (*(sr + index) != '\0')
+{
+*(des + index) = *(sr + index);
+index++;
 }
-/**
-* shell_strlen - Calculate the length of a string.
-* @str: Pointer to the input string.
-* Return: Length of the string (number of characters).
-*/
-int shell_strlen(char *str)
-{
-	int len = 0, i = 0;
-
-	while (*(str + i) != '\0')
-	{
-		len++;
-		i++;
-	}
-	return (len);
+*(des + index) = '\0';
+return (des);
 }
+
 /**
-* shell_strcat - Func to concatenate 2 strings and return the result.
-* @des: string.
-* @sr: string.
-* Return: Return the pointer to the concatenated string.
+* my_strlen - num of chars in a string
+* @str:  a pointer to string
+* Return: num of chars
 */
-char *shell_strcat(char *des, char *sr)
+int my_strlen(char *str)
 {
-	int des_len = 0, i = 0;
+int num_char = 0;
+int index = 0;
 
-	while (des[des_len])
-		des_len++;
-
-	while (sr[i])
-	{
-		des[des_len] = sr[i];
-		des_len++;
-		i++;
-	}
-	des[des_len] = '\0';
-	return (des);
+while (*(str + index))
+{
+num_char++;
+index++;
 }
-/**
-* shell_strcmp - Func to compare two strings lexicographically.
-* @str1: First string
-* @str2: Second string
-* Return: The difference between the differing characters ASCII values
-*/
-int shell_strcmp(char *str1, char *str2)
-{
-	int i;
+return (num_char);
+}
 
-	for (i = 0; str1[i] == str2[i]; i++)
-	{
-		if (str1[i] == '\0')
-		{
-			return (0);
-		}
-	}
-	return (str1[i] - str2[i]);
+/**
+* my_strcat - to combine 2 strings
+* @des: string
+* @sr: string
+* Return: a pointer to combined string
+*/
+char *my_strcat(char *des, char *sr)
+{
+int l = 0;
+int index = 0;
+
+while (des[l] != '\0')
+{
+l++;
+}
+
+while (sr[index])
+{
+des[l] = sr[index];
+l++;
+index++;
+}
+des[l] = '\0';
+return (des);
+}
+
+/**
+* my_strcmp - to compare two strings
+* @str1: first string
+* @str2: second string
+* Return: the difference between the differing characters ASCII values
+*/
+int my_strcmp(char *str1, char *str2)
+{
+int index;
+
+for (index = 0; str1[index] == str2[index]; index++)
+{
+if (!str1[index])
+{
+return (0);
+}
+}
+return (str1[index] - str2[index]);
 }

@@ -1,21 +1,17 @@
 #include "shell.h"
 /**
-* free_arg - Free memory allocated for an array of strings.
-* This function is used to deallocate memory that was dynamically
-* allocated for an array of strings, where the last element is NULL.
-*
-* @arg:  Array of strings to be freed.
-*
-* Return: void
+* my_free - Free memory allocated consist of array of strings
+* @arg: array of string to be free
+* Return: nothing
 */
-void free_arg(char **arg)
+void my_free(char **arg)
 {
-	int i = 0;
-
-	while (arg[i] != NULL)
-	{
-		free(arg[i]);
-		i++;
-	}
-	free(arg);
+int index = 0;
+/* while loop to check if element is null or not*/
+while (arg[index])
+{
+free(arg[index]);
+index++;
+}
+free(arg);
 }

@@ -15,17 +15,21 @@ extern char **environ;
 void print_prompt(int prompt);
 ssize_t input_command(char **input, size_t *size);
 ssize_t my_getline(char **buffer, size_t *buff_size, int fd);
+void my_free(char **arg);
+char *my_sprintf(char *s1, char *s2, char *s3);
+int my_sp_tab(char *str);
+int valid_cmd(char **arg, char *input_buff, int exit_num);
+int builtin_func(char **arg, char *input_buff, int exit_num);
+int my_strlen(char *str);
+int my_strcmp(char *str1, char *str2);
+char *my_strcat(char *des, char *sr);
+char *my_strcpy(char *des, char *sr);
+
+int c_deli(char y, const char *delimeter);
+char *token_strtok(char *pointer, const char *delimiters);
+
 int search_path(char **arg);
 int execute_cmd(char **arg, char *input_buff);
-int validate_cmd(char **arg, char *input_buff, int exit_num);
-char *shell_sprintf(char *str, char *d, char *sc);
-int handle_built_in(char **arg, char *input_buff, int exit_num);
-int shell_strlen(char *str);
-int shell_strcmp(char *str1, char *str2);
-char *shell_strcat(char *des, char *sr);
-char *shell_strcpy(char *des, char *sr);
-void free_arg(char **arg);
-char **tokenize_input(char *input_buff);
-int count_spaces_tabs(char *str);
+/*char **tokenize_input(char *input_buff);*/
 int execute_forked_cmd(char **arg, char *input_buff);
 #endif
