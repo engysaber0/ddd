@@ -25,8 +25,8 @@ int my_strcmp(char *str1, char *str2);
 char *my_strcat(char *des, char *sr);
 char *my_strcpy(char *des, char *sr);
 
-int c_deli(char y, const char *delimeter);
-char *token_strtok(char *pointer, const char *delimiters);
+/*int c_deli(char y, const char *delimeter);*/
+char **token_strtok(char *pointer);
 
 int search_path(char **arg);
 int execute_cmd(char **arg, char *input_buff);
