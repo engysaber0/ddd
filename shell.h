@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <errno.h>
-
+#define TK_DEMR " \t\r\n\a\""
 #define SIZE_IN  1024
 extern char **environ;
 
