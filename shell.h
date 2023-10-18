@@ -32,4 +32,12 @@ int search_path(char **arg);
 int execute_cmd(char **arg, char *input_buff);
 /*char **tokenize_input(char *input_buff);*/
 int execute_forked_cmd(char **arg, char *input_buff);
+
+/*massage error*/
+void err_command(char *counter, char *my_prog, char *err_line);
+void err_path(char *counter, char *my_prog, char *err_line);
+void err_prints(char *my_prog, int counting, int stats, char *err_line);
+char *er_num(int v);
+void exit_err(char *counter, char *my_prog, char *err_line);
+
 #endif
