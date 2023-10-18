@@ -32,7 +32,7 @@ do
 {
 sc[calc++] = ((v / count) % 10) + '0';
 count = count * 10;
-}while (count <= s * 10); // it,s condition
+}while (count <= s * 10);
 
 sc[len] = '\0';
 	return (sc);
